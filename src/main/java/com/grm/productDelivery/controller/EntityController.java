@@ -31,7 +31,7 @@ private Logger logger= LoggerFactory.getLogger(EntityController.class);
             if (requestFormat.isValid()){
                 boolean response = grmProductService.saveGRMProduct(event);
                 if (response)
-                    return new ResponseEntity<>(successRequest(requestFormat.getSuccessMessage()).toString(), HttpStatus.OK);
+                    return new ResponseEntity<>(successRequest(requestFormat.getSuccessMessage()).toString(), HttpStatus.CREATED);
                 return new ResponseEntity<>(badRequest(requestFormat.getFailureReason()).toString(), HttpStatus.BAD_REQUEST);
             }
             return new ResponseEntity<>(badRequest(requestFormat.getFailureReason()).toString(), HttpStatus.BAD_REQUEST);
