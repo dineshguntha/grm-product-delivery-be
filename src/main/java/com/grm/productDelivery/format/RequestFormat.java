@@ -11,7 +11,7 @@ public abstract class RequestFormat {
     public static String successMessage;
 
     public enum Entity {
-        name, gst, accountNumber;
+       id, name, gst, accountNumber;
     }
 
     public boolean isValid() {

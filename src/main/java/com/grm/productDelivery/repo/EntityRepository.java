@@ -6,7 +6,7 @@ import com.grm.productDelivery.model.GRMProductDelivery;
 import java.util.List;
 
 
-public interface GRMProductRepository extends MongoRepository<GRMProductDelivery, String> {
+public interface EntityRepository extends MongoRepository<GRMProductDelivery, String> {
 
     List<GRMProductDelivery> findByName(String name);
 
