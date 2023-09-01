@@ -71,4 +71,8 @@ public class EntityService extends RequestFormat {
 
     }
 
+    public List<GRMProductDelivery> getEntityByName(String name){
+        return entityRepository.findByName(name);
+    }
+
 }

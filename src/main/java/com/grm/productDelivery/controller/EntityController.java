@@ -108,4 +108,20 @@ private Logger logger= LoggerFactory.getLogger(EntityController.class);
 
         }
     }
+
+    @GetMapping(value = "/findByName/{name}")
+    public ResponseEntity<?> getEntityByName(@PathVariable("name") String prodName) {
+        logger.info("getEntityByName :: Request name - " + prodName);
+        try {
+            List<GRMProductDelivery> data = entityService.getEntityByName(prodName);
+            if (data.size()>=1)
+                return new ResponseEntity<>(data, HttpStatus.OK);
+            else
+                return new ResponseEntity<>(badRequest(GRMData.noDataFound + prodName).toString(), HttpStatus.BAD_REQUEST);
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return new ResponseEntity<>(badRequest(e.getMessage()).toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
