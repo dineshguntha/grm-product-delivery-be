@@ -8,6 +8,7 @@ import com.grm.productDelivery.repo.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class GRMProductService extends RequestFormat {
@@ -23,7 +24,7 @@ public class GRMProductService extends RequestFormat {
         GRMProductDelivery gpd=new GRMProductDelivery(name,gst,accuntNum);
         List<GRMProductDelivery> record= grmProductRepository.findByName(name);
         if(record.size()>=1){
-            failureReason = "GRM product "+ name +" already created in the database.";
+            failureReason = "Product "+ name +" already created in the database.";
             return false;
         }else{
             grmProductRepository.insert(gpd);
@@ -31,6 +32,13 @@ public class GRMProductService extends RequestFormat {
             return true;
         }
 
+    }
+    public List<GRMProductDelivery> getGRMProducts(){
+        return grmProductRepository.findAll();
+    }
+
+    public Optional<GRMProductDelivery> getGRMProductById(String id){
+        return grmProductRepository.findById(id);
     }
 
 }
