@@ -1,7 +1,7 @@
-package com.grm.productDelivery.repo;
+package com.grm.productDelivery.repositories;
 
+import com.grm.productDelivery.models.GRMProductDelivery;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import com.grm.productDelivery.model.GRMProductDelivery;
 
 import java.util.List;
 
