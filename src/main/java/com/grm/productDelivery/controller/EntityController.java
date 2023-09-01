@@ -1,8 +1,8 @@
 package com.grm.productDelivery.controller;
 
 import com.grm.productDelivery.format.RequestFormat;
-import com.grm.productDelivery.model.GRMProductDelivery;
-import com.grm.productDelivery.service.EntityService;
+import com.grm.productDelivery.models.GRMProductDelivery;
+import com.grm.productDelivery.services.EntityService;
 import com.grm.productDelivery.util.GRMData;
 import com.grm.productDelivery.validator.EntityFormatValidator;
 import org.slf4j.Logger;

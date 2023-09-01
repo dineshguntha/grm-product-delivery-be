@@ -1,10 +1,10 @@
-package com.grm.productDelivery.service;
+package com.grm.productDelivery.services;
 
 import com.grm.productDelivery.format.RequestFormat;
-import com.grm.productDelivery.model.GRMProductDelivery;
+import com.grm.productDelivery.models.GRMProductDelivery;
+import com.grm.productDelivery.repositories.EntityRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.grm.productDelivery.repo.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
