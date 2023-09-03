@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author timbernerslee
  */
-@Document(collection = "user")
+@Document(collection = "grm_product_user")
 @Data
 public class User {
 

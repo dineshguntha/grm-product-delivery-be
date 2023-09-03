@@ -11,6 +11,8 @@ import java.util.List;
 @Data
 public class UserDto {
 
+    private String userId;
+
     @NotNull
     @NotBlank(message = "The First Name is required.")
     private String firstName;
