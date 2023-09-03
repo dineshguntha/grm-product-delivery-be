@@ -18,6 +18,11 @@ public class UserDao {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * @param userDto
+     * @return
+     * @throws Exception
+     */
     public User create(UserDto userDto) throws Exception {
         log.info("inside UserDao.create() Begins");
         User saveNewUser = new User();
@@ -41,10 +46,18 @@ public class UserDao {
         return saveNewUser;
     }
 
+    /**
+     * @param firstName
+     * @return
+     */
     public List<User> getUserByFirstName(String firstName) {
         return userRepository.findByFirstName(firstName);
     }
 
+    /**
+     * @param id
+     * @return
+     */
     public Optional<User> getUserById(String id) {
         return userRepository.findById(id);
     }

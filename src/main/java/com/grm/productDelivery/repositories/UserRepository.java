@@ -12,5 +12,9 @@ import java.util.List;
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
 
+    /**
+     * @param fistName
+     * @return
+     */
     List<User> findByFirstName(String fistName);
 }

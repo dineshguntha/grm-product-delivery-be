@@ -13,11 +13,19 @@ import org.springframework.validation.Validator;
 @Component
 public class UserValidator implements Validator {
 
+    /**
+     * @param clazz ß
+     * @return
+     */
     @Override
     public boolean supports(Class<?> clazz) {
         return UserDto.class.equals(clazz);
     }
 
+    /**
+     * @param target
+     * @param errors
+     */
     @Override
     public void validate(Object target, Errors errors) {
         log.info("inside UserValidator.validate() Begins");
@@ -49,6 +57,10 @@ public class UserValidator implements Validator {
         log.info("inside UserValidator.validate() End's");
     }
 
+    /**
+     * @param target
+     * @return
+     */
     @Override
     public Errors validateObject(Object target) {
         return Validator.super.validateObject(target);

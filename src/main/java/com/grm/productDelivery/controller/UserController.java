@@ -30,6 +30,7 @@ public class UserController {
     /**
      * This API is for to register user.
      * @param userDto
+     * @param errors
      * @return
      */
     @PostMapping("/register")
