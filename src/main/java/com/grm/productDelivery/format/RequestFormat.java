@@ -5,13 +5,13 @@ import org.json.JSONObject;
 
 
 public abstract class RequestFormat {
-    protected boolean valid=false;
+    protected boolean valid = false;
     protected JSONObject requestObject;
     public static String failureReason;
     public static String successMessage;
 
     public enum Entity {
-       id, name, gst, accountNumber;
+        id, name, gst, accountNumber;
     }
 
     public boolean isValid() {
