@@ -5,6 +5,7 @@ import com.grm.productDelivery.models.Entity;
 import com.grm.productDelivery.services.EntityService;
 import com.grm.productDelivery.util.EntityMessages;
 import com.grm.productDelivery.validator.EntityFormatValidator;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,7 @@ public class EntityController extends CommonController {
 
 
     @PostMapping(value = "/save")
+    @Operation(summary = "Create An Entity")
     public ResponseEntity<String> saveEntity(@RequestBody String event) {
         log.info("saveEntity :: request -" + event);
         RequestFormat requestFormat = new EntityFormatValidator(event);
@@ -44,6 +46,7 @@ public class EntityController extends CommonController {
     }
 
     @GetMapping(value = "/findAll")
+    @Operation(summary = "Get All Entities")
     public ResponseEntity<?> getEntityByFindAll() {
         log.info("getGRMProducts byFindAll :: request");
         try {
@@ -61,6 +64,7 @@ public class EntityController extends CommonController {
     }
 
     @GetMapping(value = "/findById/{id}")
+    @Operation(summary = "Get An Entity By Id")
     public ResponseEntity<?> getEntityById(@PathVariable("id") String productId) {
         log.info("getEntityById :: Request id - " + productId);
         try {
@@ -76,6 +80,7 @@ public class EntityController extends CommonController {
     }
 
     @DeleteMapping(value = "/deleteById/{id}")
+    @Operation(summary = "Delete An Entity By Id")
     public ResponseEntity<?> deleteEntityById(@PathVariable("id") String productId) {
         log.info("deleteEntityById :: Request id - " + productId);
         try {
@@ -93,6 +98,7 @@ public class EntityController extends CommonController {
     }
 
     @PutMapping(value = "/update")
+    @Operation(summary = "Update an Entity")
     public ResponseEntity<String> updateEntity(@RequestBody String event) {
         log.info("updateEntity :: request -" + event);
         RequestFormat requestFormat = new EntityFormatValidator(event, "id");
@@ -112,6 +118,7 @@ public class EntityController extends CommonController {
     }
 
     @GetMapping(value = "/findByName/{name}")
+    @Operation(summary = "Get Entity By Name")
     public ResponseEntity<?> getEntityByName(@PathVariable("name") String prodName) {
         log.info("getEntityByName :: Request name - " + prodName);
         try {
