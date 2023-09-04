@@ -9,7 +9,7 @@ public class EntityFormatValidator extends RequestFormat {
         try {
             requestObject = new JSONObject(source);
             if (requestObject.has(Entity.name.name()) && requestObject.has(Entity.gst.name()) && requestObject.has(Entity.accountNumber.name())) {
-                String name = requestObject.isNull(Entity.name.name())?"":String.valueOf(requestObject.get(Entity.name.name())).trim();
+                String name = requestObject.isNull(Entity.name.name()) ? "" : String.valueOf(requestObject.get(Entity.name.name())).trim();
                 if (!name.isEmpty())
                     valid = true;
                 else
@@ -24,12 +24,12 @@ public class EntityFormatValidator extends RequestFormat {
 
     }
 
-    public EntityFormatValidator(String source,String id) {
+    public EntityFormatValidator(String source, String id) {
         try {
             requestObject = new JSONObject(source);
             if (requestObject.has(Entity.id.name()) && requestObject.has(Entity.name.name()) && requestObject.has(Entity.gst.name()) && requestObject.has(Entity.accountNumber.name())) {
-                String eid = requestObject.isNull(Entity.id.name())?"":String.valueOf(requestObject.get(Entity.id.name())).trim();
-                String name = requestObject.isNull(Entity.name.name())?"":String.valueOf(requestObject.get(Entity.name.name())).trim();
+                String eid = requestObject.isNull(Entity.id.name()) ? "" : String.valueOf(requestObject.get(Entity.id.name())).trim();
+                String name = requestObject.isNull(Entity.name.name()) ? "" : String.valueOf(requestObject.get(Entity.name.name())).trim();
                 if (!eid.isEmpty() && !name.isEmpty())
                     valid = true;
                 else
