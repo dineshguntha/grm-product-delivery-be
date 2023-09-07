@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.HandlerMethod;
 
 @Configuration
-@OpenAPIDefinition(info = @Info(title = "GRM Product Delivery Application", version = "v1" ),
+@OpenAPIDefinition(info = @Info(title = "GRM Product Delivery Application", version = "v3" ),
         security={@SecurityRequirement(name="bearerAuth")})
 @SecurityScheme(
         name = "bearerAuth",
