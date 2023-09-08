@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Document(collection = "entity")
 public class Entity {
     @Id
@@ -21,6 +20,12 @@ public class Entity {
     private String accountNumber;
 
     public Entity(String name, String gst, String accountNumber) {
+        this.name = name;
+        this.gst = gst;
+        this.accountNumber = accountNumber;
+    }
+    public Entity(String id, String name, String gst, String accountNumber) {
+        this.id = id;
         this.name = name;
         this.gst = gst;
         this.accountNumber = accountNumber;
