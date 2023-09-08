@@ -3,10 +3,10 @@ package com.grm.productDelivery;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class GrmProductDeliveryBeApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 

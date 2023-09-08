@@ -35,11 +35,12 @@ public class JWTSecurityConfig {
     // Configuring HttpSecurity
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.cors(Customizer.withDefaults())
+        return http
                 .csrf().disable()
-                .authorizeHttpRequests(authz -> authz .requestMatchers ("/auth/token").permitAll ()
-                        .requestMatchers("/auth/addNewUser").permitAll()
-                        .requestMatchers("/v3/*", "/swagger-ui/*").permitAll()
+                .cors(Customizer.withDefaults())
+                .authorizeHttpRequests(authz -> authz .
+                        requestMatchers ("/auth/addNewUser","/auth/token", "/v3/**", "/swagger-ui/**")
+                        .permitAll ()
                         .anyRequest ().authenticated())
                 .authenticationProvider(authenticationProvider())
                 .sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

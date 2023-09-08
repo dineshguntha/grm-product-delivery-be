@@ -57,7 +57,7 @@ public class EntityService extends RequestFormat {
         String name = (String) requestObject.get("name");
         String gst = requestObject.isNull("gst") ? "" : requestObject.get("gst").toString().trim();
         String accuntNum = requestObject.isNull("accountNumber") ? "" : requestObject.get("accountNumber").toString().trim();
-        com.grm.productDelivery.models.Entity gpd = new com.grm.productDelivery.models.Entity(id, name, gst, accuntNum);
+       com.grm.productDelivery.models.Entity gpd = new com.grm.productDelivery.models.Entity(id, name, gst, accuntNum);
         Optional<com.grm.productDelivery.models.Entity> data = getEntityById(id);
         if (data.isPresent()) {
             entityRepository.save(gpd);
