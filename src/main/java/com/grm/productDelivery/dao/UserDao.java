@@ -1,6 +1,7 @@
 package com.grm.productDelivery.dao;
 
 import com.grm.productDelivery.dto.UserDto;
+import com.grm.productDelivery.exceptions.ResourceNotFoundException;
 import com.grm.productDelivery.models.User;
 import com.grm.productDelivery.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -58,8 +58,25 @@ public class UserDao {
      * @param id
      * @return
      */
-    public Optional<User> getUserById(String id) {
-        return userRepository.findById(id);
+    public User getUserById(String id) throws ResourceNotFoundException {
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
+    }
+
+    /**
+     * @param user
+     * @return
+     */
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
+    /**
+     * @param id
+     * @throws ResourceNotFoundException
+     */
+    public void deleteUser(String id) throws ResourceNotFoundException {
+        User existingUser = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
+        userRepository.delete(existingUser);
     }
 
 }
