@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -53,7 +54,8 @@ public class UserController {
             return new ResponseEntity(userResponseDto, HttpStatus.CREATED);
         } catch (Exception e) {
             log.error("This User can't be registered Or already Exist");
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new ResponseStatusException(
+                    HttpStatus.INTERNAL_SERVER_ERROR, "This User can't be registered Or already Exist", e);
         }
     }
 
@@ -75,7 +77,8 @@ public class UserController {
             return new ResponseEntity(updatedUser, HttpStatus.OK);
         } catch (ResourceNotFoundException rnfe) {
             log.error("This User can't be updated Or Nor Exist " + rnfe.getMessage());
-            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "User Not Found", rnfe);
         }
     }
 
@@ -95,9 +98,8 @@ public class UserController {
             return response;
         } catch (ResourceNotFoundException rnfe) {
             log.error("This User can't be Deleted Or Nor Exist " + rnfe.getMessage());
-            Map<String, Boolean> response = new HashMap<>();
-            response.put("No Content", Boolean.FALSE);
-            return response;
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "User Not Found", rnfe);
         }
     }
 }
