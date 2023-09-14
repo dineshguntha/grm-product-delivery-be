@@ -43,7 +43,7 @@ public class UserController {
      */
     @PostMapping("/registerUser")
     public ResponseEntity<UserDto> registerUser(@Valid @RequestBody UserDto userDto, Errors errors) {
-        log.info("inside UserController.registerUser() Begins");
+        log.info("inside UserController.registerUser()");
         try {
             userValidator.validate(userDto, errors);
             if (errors.hasErrors()) {
@@ -51,7 +51,6 @@ public class UserController {
                 throw new Exception("This User can't be registered.");
             }
             UserDto userResponseDto = userService.create(userDto);
-            log.info("inside UserController.registerUser() End's");
             return new ResponseEntity(userResponseDto, HttpStatus.CREATED);
         } catch (Exception e) {
             log.error("This User can't be registered Or already Exist");
@@ -70,11 +69,10 @@ public class UserController {
     @PutMapping("/updateUser/{id}")
     public ResponseEntity<UserDto> updateUser(@PathVariable(value = "id") String id,
                                               @Valid @RequestBody UserDto userDto, Errors errors) {
-        log.info("inside UserController.updateUser() Begins");
+        log.info("inside UserController.updateUser()");
         try {
             userValidator.validate(userDto, errors);
             UserDto updatedUser = userService.updateUser(id, userDto);
-            log.info("inside UserController.updateUser() End's");
             return new ResponseEntity(updatedUser, HttpStatus.OK);
         } catch (ResourceNotFoundException rnfe) {
             log.error("This User can't be updated Or Nor Exist " + rnfe.getMessage());
@@ -110,9 +108,8 @@ public class UserController {
      */
     @GetMapping("/getUsersByEntityName/{entityName}")
     public ResponseEntity<List<UserDto>> getUsersByEntityName(@PathVariable(value = "entityName") @NonNull String entityName) {
-        log.info("inside UserController.getUsersByEntityName() Begins");
+        log.info("inside UserController.getUsersByEntityName()");
         try {
-            log.info("inside UserController.getUsersByEntityName() End's");
             return new ResponseEntity<>(userService.getUsersListByEntityName(entityName), HttpStatus.OK);
         } catch (Exception exception) {
             log.error("This User is not Exist " + exception.getMessage());
@@ -127,9 +124,8 @@ public class UserController {
      */
     @GetMapping("/getUserByLoginName/{loginName}")
     public ResponseEntity<UserDto> getUserByLoginName(@PathVariable(value = "loginName") @NonNull String loginName) {
-        log.info("inside UserController.getUserByLoginName() Begins");
+        log.info("inside UserController.getUserByLoginName()");
         try {
-            log.info("inside UserController.getUsersByEntityName() End's");
             return new ResponseEntity<>(userService.getUserByLoginName(loginName), HttpStatus.OK);
         } catch (Exception exception) {
             log.error("This User is not Exist " + exception.getMessage());

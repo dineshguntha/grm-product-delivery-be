@@ -59,9 +59,11 @@ public class UserDao {
         return userRepository.findByFirstName(firstName);
     }
 
+
     /**
      * @param id
      * @return
+     * @throws ResourceNotFoundException
      */
     public User getUserById(String id) throws ResourceNotFoundException {
         return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
@@ -84,6 +86,7 @@ public class UserDao {
         userRepository.delete(existingUser);
     }
 
+
     /**
      * @param entityName
      * @return
@@ -91,6 +94,7 @@ public class UserDao {
     public List<User> getUsersByEntityName(String entityName) {
         return userRepository.findByEntityName(entityName).stream().filter(user -> user.getEntityName().equalsIgnoreCase(entityName)).collect(Collectors.toList());
     }
+
 
     /**
      * @param loginName
