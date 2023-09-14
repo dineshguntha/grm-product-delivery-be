@@ -25,4 +25,17 @@ public interface UserRepository extends MongoRepository<User, String> {
      */
     @Override
     Optional<User> findById(String id);
+
+    /**
+     * @param entityName
+     * @return
+     */
+    List<User> findByEntityName(String entityName);
+
+    /**
+     * @param loginName
+     * @return
+     */
+    User findByLoginName(String loginName);
+
 }

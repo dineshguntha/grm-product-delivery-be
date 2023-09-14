@@ -29,6 +29,7 @@ public class UserDao {
         saveNewUser.setId(UUID.randomUUID().toString().split("-")[0]);
         saveNewUser.setFirstName(userDto.getFirstName());
         saveNewUser.setMiddleName(userDto.getMiddleName());
+        saveNewUser.setLoginName(userDto.getLoginName());
         saveNewUser.setLastName(userDto.getLastName());
         saveNewUser.setPassword(userDto.getPassword());
         saveNewUser.setEmailId(userDto.getEmailId());

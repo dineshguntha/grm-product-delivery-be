@@ -19,6 +19,7 @@ public class User {
     private String firstName; // Required
     private String middleName; // Optional
     private String lastName; // Required
+    private String loginName; // Required
     private String password;// Required
     private String emailId; // Optional
     private String phoneNumber; //Required

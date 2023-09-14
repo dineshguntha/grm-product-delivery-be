@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserService {
         userDto.setFirstName(user.getFirstName());
         userDto.setMiddleName(user.getMiddleName());
         userDto.setLastName(user.getLastName());
+        userDto.setLoginName(user.getLoginName());
         userDto.setPassword(user.getPassword());
         userDto.setEmailId(user.getEmailId());
         userDto.setPhoneNumber(user.getPhoneNumber());
@@ -55,6 +56,7 @@ public class UserServiceImpl implements UserService {
         User existingUser = userDao.getUserById(id);
         existingUser.setFirstName(userDto.getFirstName());
         existingUser.setMiddleName(userDto.getMiddleName());
+        existingUser.setLoginName(userDto.getLoginName());
         existingUser.setLastName(userDto.getLastName());
         existingUser.setPassword(userDto.getPassword());
         existingUser.setEmailId(userDto.getEmailId());

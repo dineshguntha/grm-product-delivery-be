@@ -24,6 +24,11 @@ public class UserDto {
     private String lastName;
 
     @NotNull
+    @NotBlank(message = "The Login Name is required.")
+    private String loginName;
+
+
+    @NotNull
     @NotBlank(message = "The Password is required.")
     private String password;
 
