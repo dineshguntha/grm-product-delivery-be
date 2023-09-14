@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * @author timbernerslee
@@ -44,7 +45,7 @@ public class UserDao {
         if (existUsers.size() >= 1) {
             throw new Exception("User is already exist");
         } else {
-            userRepository.save(saveNewUser);
+            userRepository.insert(saveNewUser);
         }
         log.info("inside UserDao.create() End's");
         return saveNewUser;
@@ -88,7 +89,7 @@ public class UserDao {
      * @return
      */
     public List<User> getUsersByEntityName(String entityName) {
-        return userRepository.findByEntityName(entityName);
+        return userRepository.findByEntityName(entityName).stream().filter(user -> user.getEntityName().equalsIgnoreCase(entityName)).collect(Collectors.toList());
     }
 
     /**
@@ -96,7 +97,7 @@ public class UserDao {
      * @return
      */
     public User getUserByLoginName(String loginName) {
-        return userRepository.findByLoginName(loginName);
+        return userRepository.findByLoginName(loginName).stream().filter(user -> user.getLoginName().equalsIgnoreCase(loginName)).findAny().get();
     }
 
 }

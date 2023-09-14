@@ -100,6 +100,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUserByLoginName(String loginName) {
         log.info("inside UserServiceImpl.getUserByLoginName()");
-        return this.modelMapper.map(userDao.getUserByLoginName(loginName), UserDto.class);
+        User user = userDao.getUserByLoginName(loginName);
+        return this.modelMapper.map(user, UserDto.class);
     }
 }

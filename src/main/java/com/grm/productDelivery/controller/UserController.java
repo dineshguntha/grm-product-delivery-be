@@ -117,7 +117,7 @@ public class UserController {
         } catch (Exception exception) {
             log.error("This User is not Exist " + exception.getMessage());
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "User Not Found", exception);
+                    HttpStatus.NOT_FOUND, "User Not Found with Entity Name", exception);
         }
     }
 
@@ -134,7 +134,7 @@ public class UserController {
         } catch (Exception exception) {
             log.error("This User is not Exist " + exception.getMessage());
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "User Not Found", exception);
+                    HttpStatus.NOT_FOUND, "User Not Found with Login Name", exception);
         }
     }
 }

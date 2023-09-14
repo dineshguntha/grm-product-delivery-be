@@ -37,6 +37,6 @@ public interface UserRepository extends MongoRepository<User, String> {
      * @param loginName
      * @return
      */
-    User findByLoginName(String loginName);
+    List<User> findByLoginName(String loginName);
 
 }
