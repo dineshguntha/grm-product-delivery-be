@@ -6,8 +6,12 @@ import com.grm.productDelivery.exceptions.ResourceNotFoundException;
 import com.grm.productDelivery.models.User;
 import com.grm.productDelivery.services.Interfaces.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author timbernerslee
@@ -19,6 +23,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     /**
      * @param userDto ß
      * @return
@@ -28,19 +35,8 @@ public class UserServiceImpl implements UserService {
     public UserDto create(UserDto userDto) throws Exception {
         log.info("inside UserServiceImpl.create() Begins");
         User user = userDao.create(userDto);
-        userDto.setUserId(user.getId());
-        userDto.setFirstName(user.getFirstName());
-        userDto.setMiddleName(user.getMiddleName());
-        userDto.setLastName(user.getLastName());
-        userDto.setLoginName(user.getLoginName());
-        userDto.setPassword(user.getPassword());
-        userDto.setEmailId(user.getEmailId());
-        userDto.setPhoneNumber(user.getPhoneNumber());
-        userDto.setRoles(user.getRoles());
-        userDto.setEntityName(user.getEntityName());
-        userDto.setRouteName(user.getRouteName());
         log.info("inside UserServiceImpl.create() End's");
-        return userDto;
+        return this.modelMapper.map(user, UserDto.class);
     }
 
 
@@ -77,6 +73,33 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void deleteUser(String id) throws ResourceNotFoundException {
+        log.info("inside UserServiceImpl.deleteUser() Begins");
         userDao.deleteUser(id);
+        log.info("inside UserServiceImpl.deleteUser() End's");
+    }
+
+    /**
+     * @param entityName
+     * @return
+     */
+    @Override
+    public List<UserDto> getUsersListByEntityName(String entityName) {
+        log.info("inside UserServiceImpl.getUsersListByEntityName()");
+        List<User> entityNamesList = userDao.getUsersByEntityName(entityName);
+        return entityNamesList
+                .stream()
+                .map(user -> this.modelMapper.map(user, UserDto.class))
+                .collect(Collectors.toList());
+    }
+
+
+    /**
+     * @param loginName
+     * @return
+     */
+    @Override
+    public UserDto getUserByLoginName(String loginName) {
+        log.info("inside UserServiceImpl.getUserByLoginName()");
+        return this.modelMapper.map(userDao.getUserByLoginName(loginName), UserDto.class);
     }
 }

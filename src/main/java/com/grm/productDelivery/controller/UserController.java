@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -100,6 +101,40 @@ public class UserController {
             log.error("This User can't be Deleted Or Nor Exist " + rnfe.getMessage());
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "User Not Found", rnfe);
+        }
+    }
+
+    /**
+     * @param entityName
+     * @return
+     */
+    @GetMapping("/getUsersByEntityName/{entityName}")
+    public ResponseEntity<List<UserDto>> getUsersByEntityName(@PathVariable(value = "entityName") @NonNull String entityName) {
+        log.info("inside UserController.getUsersByEntityName() Begins");
+        try {
+            log.info("inside UserController.getUsersByEntityName() End's");
+            return new ResponseEntity<>(userService.getUsersListByEntityName(entityName), HttpStatus.OK);
+        } catch (Exception exception) {
+            log.error("This User is not Exist " + exception.getMessage());
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "User Not Found", exception);
+        }
+    }
+
+    /**
+     * @param loginName
+     * @return
+     */
+    @GetMapping("/getUserByLoginName/{loginName}")
+    public ResponseEntity<UserDto> getUserByLoginName(@PathVariable(value = "loginName") @NonNull String loginName) {
+        log.info("inside UserController.getUserByLoginName() Begins");
+        try {
+            log.info("inside UserController.getUsersByEntityName() End's");
+            return new ResponseEntity<>(userService.getUserByLoginName(loginName), HttpStatus.OK);
+        } catch (Exception exception) {
+            log.error("This User is not Exist " + exception.getMessage());
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "User Not Found", exception);
         }
     }
 }

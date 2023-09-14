@@ -3,6 +3,8 @@ package com.grm.productDelivery.services.Interfaces;
 import com.grm.productDelivery.dto.UserDto;
 import com.grm.productDelivery.exceptions.ResourceNotFoundException;
 
+import java.util.List;
+
 /**
  * @author timbernerslee
  */
@@ -29,4 +31,17 @@ public interface UserService {
      * @return
      */
     void deleteUser(String id) throws ResourceNotFoundException;
+
+    /**
+     * @param entityName
+     * @return
+     */
+    List<UserDto> getUsersListByEntityName(String entityName);
+
+    /**
+     * @param loginName
+     * @return
+     */
+    UserDto getUserByLoginName(String loginName);
+
 }

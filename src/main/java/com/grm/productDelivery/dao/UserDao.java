@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * @author timbernerslee
+ */
 @Slf4j
 @Component
 public class UserDao {
@@ -78,6 +81,22 @@ public class UserDao {
     public void deleteUser(String id) throws ResourceNotFoundException {
         User existingUser = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
         userRepository.delete(existingUser);
+    }
+
+    /**
+     * @param entityName
+     * @return
+     */
+    public List<User> getUsersByEntityName(String entityName) {
+        return userRepository.findByEntityName(entityName);
+    }
+
+    /**
+     * @param loginName
+     * @return
+     */
+    public User getUserByLoginName(String loginName) {
+        return userRepository.findByLoginName(loginName);
     }
 
 }
