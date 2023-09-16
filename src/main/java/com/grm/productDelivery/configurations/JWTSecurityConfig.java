@@ -39,7 +39,7 @@ public class JWTSecurityConfig {
                 .csrf().disable()
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(authz -> authz .
-                        requestMatchers ("/auth/addNewUser","/auth/token", "/v3/**", "/swagger-ui/**")
+                        requestMatchers ("/auth/addNewUser","/auth/token", "/v3/**", "/api/v1/**", "/swagger-ui/**")
                         .permitAll ()
                         .anyRequest ().authenticated())
                 .authenticationProvider(authenticationProvider())
