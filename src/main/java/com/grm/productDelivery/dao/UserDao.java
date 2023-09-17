@@ -104,4 +104,11 @@ public class UserDao {
         return userRepository.findByLoginName(loginName).stream().filter(user -> user.getLoginName().equalsIgnoreCase(loginName)).findAny().get();
     }
 
+    /**
+     * @return
+     */
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
+    }
+
 }

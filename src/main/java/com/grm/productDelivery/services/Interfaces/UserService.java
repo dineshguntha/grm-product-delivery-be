@@ -44,4 +44,9 @@ public interface UserService {
      */
     UserDto getUserByLoginName(String loginName);
 
+    /**
+     * @return
+     */
+    List<UserDto> findAllUsers();
+
 }
