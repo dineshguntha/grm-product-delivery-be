@@ -103,4 +103,16 @@ public class UserServiceImpl implements UserService {
         User user = userDao.getUserByLoginName(loginName);
         return this.modelMapper.map(user, UserDto.class);
     }
+
+    /**
+     * @return
+     */
+    @Override
+    public List<UserDto> findAllUsers() {
+        List<User> userList = userDao.findAllUsers();
+        return userList
+                .stream()
+                .map(user -> modelMapper.map(user, UserDto.class))
+                .collect(Collectors.toList());
+    }
 }
