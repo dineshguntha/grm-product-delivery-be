@@ -38,6 +38,10 @@ public class UserValidator implements Validator {
             errors.rejectValue("lastName", "error.lastName.required", null, "Last Name Required");
             log.error("Last Name Required");
         }
+        if (userDto.getLoginName() == null || userDto.getLoginName().length() == 0) {
+            errors.rejectValue("loginName", "error.loginName.required", null, "Login Name Required");
+            log.error("Login Name Required");
+        }
         if (userDto.getPassword() == null || userDto.getPassword().length() == 0) {
             errors.rejectValue("password", "error.password.required", null, "Password Required");
             log.error("Password Required");

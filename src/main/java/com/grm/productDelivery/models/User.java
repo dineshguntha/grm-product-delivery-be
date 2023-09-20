@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author timbernerslee
  */
-@Document(collection = "grm_product_user")
+@Document(collection = "users")
 @Data
 public class User {
 
@@ -19,6 +19,8 @@ public class User {
     private String firstName; // Required
     private String middleName; // Optional
     private String lastName; // Required
+    @Indexed(unique = true)
+    private String loginName; // Required
     private String password;// Required
     private String emailId; // Optional
     private String phoneNumber; //Required
