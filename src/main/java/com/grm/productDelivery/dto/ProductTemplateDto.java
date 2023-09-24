@@ -11,6 +11,9 @@ import java.util.List;
 
 @Data
 public class ProductTemplateDto {
+
+    private String id;
+
     @NotBlank(message = "createdBy is required")
     @NotNull(message = "createdBy is required. It should not be null")
     private String createdBy;

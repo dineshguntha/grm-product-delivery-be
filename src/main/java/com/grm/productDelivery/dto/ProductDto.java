@@ -23,4 +23,7 @@ public class ProductDto {
     @NotNull(message = "sellingCost is required")
     private float sellingCost;
 
+    @NotNull(message = "status is required")
+    private boolean status;
+
 }
