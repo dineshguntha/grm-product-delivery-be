@@ -17,5 +17,6 @@ public class Product {
     private float originalCost;
     private float  sellingCost;
     private String categoryType;
+    private boolean status;
 
 }
