@@ -11,11 +11,13 @@ import java.util.*;
 /**
  * @author timbernerslee
  */
-@Document(collection = "customer-model")
+@Document(collection = "customer-template")
 @Data
-public class CustomerModel {
+@NoArgsConstructor
+@AllArgsConstructor
+public class CustomerTemplate {
     @Id
-    private String customerModelId;
+    private String customerTemplateId;
     private LocalDateTime createdAt;
     private String createdBy;
     private LocalDateTime modifiedAt;

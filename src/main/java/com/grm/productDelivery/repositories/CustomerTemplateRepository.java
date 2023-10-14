@@ -10,11 +10,11 @@ import java.util.*;
  * @author timbernerslee
  */
 @Repository
-public interface CustomerModelRepository extends MongoRepository<CustomerModel, String> {
+public interface CustomerTemplateRepository extends MongoRepository<CustomerTemplate, String> {
 
     /**
      * @param routeName
-     * @return List of CustomerModel
+     * @return List of CustomerTemplate
      */
-    List<CustomerModel> findByRouteName(String routeName);
+    List<CustomerTemplate> findByRouteName(String routeName);
 }

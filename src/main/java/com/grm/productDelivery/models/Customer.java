@@ -11,6 +11,8 @@ import javax.validation.constraints.*;
  */
 @Document(collection = "customer")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
     @Id
     private String customerId;

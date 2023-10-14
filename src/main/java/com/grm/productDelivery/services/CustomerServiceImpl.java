@@ -9,5 +9,5 @@ import org.springframework.beans.factory.annotation.*;
 public class CustomerServiceImpl {
 
     @Autowired
-    private CustomerModelDao customerDao;
+    private CustomerTemplateDao customerDao;
 }
