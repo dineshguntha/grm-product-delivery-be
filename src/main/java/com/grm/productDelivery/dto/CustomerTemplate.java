@@ -1,5 +1,6 @@
 package com.grm.productDelivery.dto;
 
+import com.grm.productDelivery.models.*;
 import lombok.*;
 
 import javax.validation.constraints.*;
@@ -46,5 +47,5 @@ public class CustomerTemplate {
     @NotEmpty
     @NotNull
     @NotBlank(message = "Customers are required.")
-    private List<CustomerDto> customers;
+    private List<Customer> customers;
 }

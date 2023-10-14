@@ -15,7 +15,7 @@ import java.util.*;
 @Data
 public class CustomerModel {
     @Id
-    private String id;
+    private String customerModelId;
     private LocalDateTime createdAt;
     private String createdBy;
     private LocalDateTime modifiedAt;
