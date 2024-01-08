@@ -41,10 +41,10 @@ public class JWTSecurityConfig {
                 .authorizeHttpRequests(authz -> authz .
                         requestMatchers ("/auth/addNewUser","/auth/token", "/v3/**", "/user/**", "/swagger-ui/**")
                         .permitAll ()
-                        .anyRequest ().authenticated())
-                .authenticationProvider(authenticationProvider())
-                .sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+                        .anyRequest ().permitAll())
+//                .authenticationProvider(authenticationProvider())
+//                .sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
 
     }
