@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 public class CustomerController {
 
-    @Autowired
+    //@Autowired
     private CustomerService customerService;
 }
